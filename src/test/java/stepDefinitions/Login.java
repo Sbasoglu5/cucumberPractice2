@@ -15,12 +15,7 @@ import utils.ConfigReader;
 
 import java.time.Duration;
 
-public class Login extends CommonMethods {
-
-    @Given("open the browser and launch HRMS application")
-    public void open_the_browser_and_launch_hrms_application() {
-        openBrowsersAndLaunchApplication();
-    }
+public class  Login extends CommonMethods {
     @When("user enters valid email and valid password")
     public void user_enters_valid_email_and_valid_password() {
         WebElement userNameText=driver.findElement(By.id("txtUsername"));
@@ -32,17 +27,18 @@ public class Login extends CommonMethods {
     public void click_on_login_button() {
         WebElement clickBtn=driver.findElement(By.id("btnLogin"));
         doClick(clickBtn);
+
     }
+
     @Then("user is logged in successfully")
     public void user_is_logged_in_successfully() {
-        boolean displayed=driver.findElement(By.xpath("//a[text()='Welcome Admin']")).isDisplayed();
-        if (displayed){
-            System.out.println("Logged in successfully");
+        boolean userLoggedIn = driver.findElement(By.xpath("//a[text()='Welcome Admin']")).isDisplayed();
+        if (userLoggedIn) {
+            System.out.println("user is successfully logged in!");
+
         }
     }
-    @Then("close the browser")
-    public void close_the_browser() {
-        closeBrowser();
-    }
+
+
 
 }
